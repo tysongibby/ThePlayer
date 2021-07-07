@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Io\" />
+    <Folder Include="Log\" />
+    <Folder Include="Models\Factories\" />
+    <Folder Include="Models\Repositories\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Packaging\" />
+    <Folder Include="Services\Playback\" />
+    <Folder Include="Win32\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Settings\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.114.4" />
+  </ItemGroup>
+
+</Project>
