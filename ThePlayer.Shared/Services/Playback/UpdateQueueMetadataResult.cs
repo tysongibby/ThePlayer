@@ -1,4 +1,4 @@
-﻿namespace Dopamine.Services.Playback
+﻿namespace ThePlayer.Shared.Services.Playback
 {
     public class UpdateQueueMetadataResult
     {

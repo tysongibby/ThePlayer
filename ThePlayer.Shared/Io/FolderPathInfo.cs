@@ -1,4 +1,4 @@
-﻿namespace ThePlayer.Share.Io
+﻿namespace ThePlayer.Shared.Io
 {
     public class FolderPathInfo
     {

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace ThePlayer.Share.Io
+namespace ThePlayer.Shared.Io
 {
     public sealed class FileOperations
     {

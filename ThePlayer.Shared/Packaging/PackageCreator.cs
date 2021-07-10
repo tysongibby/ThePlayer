@@ -11,6 +11,7 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using ThePlayer.Shared.Packaging;
 
 namespace Digimezzo.Foundation.Core.Packaging
 {

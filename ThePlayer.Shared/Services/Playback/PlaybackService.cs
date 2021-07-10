@@ -1,21 +1,17 @@
-﻿using Digimezzo.Foundation.Core.Logging;
-using Digimezzo.Foundation.Core.Settings;
-using Digimezzo.Foundation.Core.Utils;
-using Dopamine.Core.Audio;
-using Dopamine.Core.Base;
-using Dopamine.Core.Extensions;
-using Dopamine.Core.Helpers;
-using Dopamine.Data;
-using Dopamine.Data.Entities;
-using Dopamine.Data.Metadata;
-using Dopamine.Data.Repositories;
-using Dopamine.Services.Entities;
-using Dopamine.Services.Equalizer;
-using Dopamine.Services.Extensions;
-using Dopamine.Services.File;
-using Dopamine.Services.I18n;
-using Dopamine.Services.Playlist;
-using Dopamine.Services.Utils;
+﻿using ThePlayer.Shared.Log;
+using ThePlayer.Shared.Settings;
+using ThePlayer.Shared.Utilities;
+using ThePlayer.Shared.Models;
+using ThePlayer.Shared.Models.Repositories;
+using ThePlayer.Shared.Models.Views;
+using ThePlayer.Shared.Extensions;
+using ThePlayer.Shared.Services.Audio;
+using ThePlayer.Shared.Services.I18n;
+using ThePlayer.Shared.Helpers;
+using ThePlayer.Shared.Services.MetaDataService;
+using ThePlayer.Shared.Services.Playlist;
+using ThePlayer.Shared.Services.Equalizer;
+using ThePlayer.Shared.Services.File;
 using Prism.Ioc;
 using System;
 using System.Collections.Generic;
@@ -25,7 +21,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 
-namespace Dopamine.Services.Playback
+namespace ThePlayer.Shared.Services.Playback
 {
     public class PlaybackService : IPlaybackService
     {
@@ -805,7 +801,7 @@ namespace Dopamine.Services.Playback
             }
 
             IList<Track> tracks = await this.trackRepository.GetAlbumTracksAsync(albumViewModels.Select(x => x.AlbumKey).ToList());
-            List<TrackViewModel> orderedTracks = await Utils.EntityUtils.OrderTracksAsync(await this.container.ResolveTrackViewModelsAsync(tracks), TrackOrder.ByAlbum);
+            List<TrackViewModel> orderedTracks = await EntityUtils.OrderTracksAsync(await this.container.ResolveTrackViewModelsAsync(tracks), TrackOrder.ByAlbum);
             await this.EnqueueAsync(orderedTracks, shuffle, unshuffle);
         }
 

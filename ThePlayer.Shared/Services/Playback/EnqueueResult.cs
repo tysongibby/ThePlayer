@@ -1,7 +1,7 @@
-﻿using Dopamine.Services.Entities;
+﻿using ThePlayer.Shared.Models.Views;
 using System.Collections.Generic;
 
-namespace Dopamine.Services.Playback
+namespace ThePlayer.Shared.Services.Playback
 {
     public class EnqueueResult
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Dopamine.Services.Playback
+namespace ThePlayer.Shared.Services.Playback
 {
     public class PlaybackSuccessEventArgs : EventArgs
     {

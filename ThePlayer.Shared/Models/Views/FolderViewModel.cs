@@ -27,7 +27,8 @@ namespace ThePlayer.Shared.Models.Views
             set
             {
                 this.folder.ShowInCollection = value ? 1 : 0;
-                RaisePropertyChanged(nameof(this.ShowInCollection));
+                //RaisePropertyChanged(nameof(this.ShowInCollection));
+                //TODO: folder.ShowInCollection - removed MVVM (BindableBase) code verify functional
             }
         }
 

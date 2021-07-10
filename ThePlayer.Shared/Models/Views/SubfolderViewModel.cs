@@ -18,13 +18,13 @@ namespace ThePlayer.Shared.Models.Views
         public bool IsPlaying
         {
             get { return this.isPlaying; }
-            set { SetProperty<bool>(ref this.isPlaying, value); }
+            set { this.isPlaying = value; }
         }
 
         public bool IsPaused
         {
             get { return this.isPaused; }
-            set { SetProperty<bool>(ref this.isPaused, value); }
+            set { this.isPaused = value; }
         }
 
         public SubfolderViewModel(string path, bool isGoToParent)

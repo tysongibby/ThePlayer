@@ -1,16 +1,15 @@
-﻿using Digimezzo.Foundation.Core.Logging;
-using Dopamine.Core.Base;
-using Dopamine.Core.Extensions;
-using Dopamine.Data.Entities;
-using Dopamine.Data.Metadata;
-using Dopamine.Data.Repositories;
-using Dopamine.Services.Entities;
+﻿using ThePlayer.Shared.Log;
+using ThePlayer.Shared.Models;
+using ThePlayer.Shared.Models.Views;
+using ThePlayer.Shared.Models.Repositories;
+using ThePlayer.Shared.Extensions;
+using ThePlayer.Shared.Services.Playback;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Dopamine.Services.Playback
+namespace ThePlayer.Shared.Services.Playback
 {
     internal class QueueManager
     {

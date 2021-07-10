@@ -1,13 +1,11 @@
-﻿using Dopamine.Core.Audio;
-using Dopamine.Core.Base;
-using Dopamine.Data;
-using Dopamine.Data.Metadata;
-using Dopamine.Services.Entities;
+﻿using ThePlayer.Shared.Services.Audio;
+using ThePlayer.Shared.Models;
+using ThePlayer.Shared.Models.Views;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Dopamine.Services.Playback
+namespace ThePlayer.Shared.Services.Playback
 {
     public delegate void PlaybackFailedEventHandler(object sender, PlaybackFailedEventArgs e);
     public delegate void PlaybackSuccessEventHandler(object sender, PlaybackSuccessEventArgs e);

@@ -5,21 +5,52 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Views\ISemanticZoomable.cs" />
+    <Compile Remove="Models\Views\ISemanticZoomSelector.cs" />
+    <Compile Remove="Models\Views\ISemanticZoomViewModel.cs" />
+    <Compile Remove="Models\Views\SemanticZoomSelectorViewModel.cs" />
+    <Compile Remove="Utilities\ScrollUtils.cs" />
+    <Compile Remove="Utilities\SemanticZoomUtils.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Io\" />
     <Folder Include="Log\" />
     <Folder Include="Models\Factories\" />
     <Folder Include="Models\Repositories\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Images\" />
     <Folder Include="Packaging\" />
+    <Folder Include="Services\LastFm.Api\LastFm.ScrobblingService\" />
+    <Folder Include="Services\Audio\" />
+    <Folder Include="Services\Cache\" />
     <Folder Include="Services\Playback\" />
     <Folder Include="Win32\" />
-    <Folder Include="Utilities\" />
     <Folder Include="Settings\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="NVorbis" Version="0.10.3" />
     <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.114.4" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+    <PackageReference Include="System.Management" Version="5.0.0" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.8.1" />
+    <PackageReference Include="TagLibSharp" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="CSCore">
+      <HintPath>Libraries\CSCore.dll</HintPath>
+    </Reference>
+    <Reference Include="CSCore.Ffmpeg">
+      <HintPath>Libraries\CSCore.Ffmpeg.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism">
+      <HintPath>Libraries\Prism.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
