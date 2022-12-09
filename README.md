@@ -1,1 +1,1 @@
-# ThePlayer - reorginazation and resctructure of Dopamine eventually to .NET 5
+# The Player - reorginazation and resctructure of Dopamine eventually to .NET 6
