@@ -4,7 +4,7 @@ using ThePlayer.Shared.Models.Views;
 using ThePlayer.Shared.Settings;
 using ThePlayer.Shared.Log;
 using ThePlayer.Shared.Utilities;
-using Dopamine.Services.Playback;
+using ThePlayer.Shared.Services.Playback;
 using System;
 using System.Threading.Tasks;
 
