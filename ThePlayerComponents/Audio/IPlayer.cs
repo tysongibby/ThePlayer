@@ -44,13 +44,14 @@ namespace ThePlayerComponents.Audio
 
         void ApplyFilter(double[] filterValues);
 
-        ISpectrumPlayer GetWrapperSpectrumPlayer(SpectrumChannel channel);
+        // Audio visualizer FFT (Fast Forier Transform spectrum analyzer)
+       //ISpectrumPlayer GetWrapperSpectrumPlayer(SpectrumChannel channel);
 
         void SwitchAudioDevice(AudioDevice audioDevice);
 
         IList<AudioDevice> GetAllAudioDevices();
 
         event EventHandler PlaybackFinished;
-        event PlaybackInterruptedEventHandler PlaybackInterrupted;
+        //event PlaybackInterruptedEventHandler PlaybackInterrupted;
     }
 }
