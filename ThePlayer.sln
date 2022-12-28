@@ -13,7 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThePlayerServices", "ThePla
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThePlayerComponents", "ThePlayerComponents\ThePlayerComponents.csproj", "{E541B312-43D4-4EB7-931B-C3AF3D548A82}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NAudio", "..\NAudio\NAudio\NAudio.csproj", "{CAE73444-27C4-4592-A072-6C8A68E9476A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8FF590FC-993C-4833-9BBB-6D6140703477}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +44,6 @@ Global
 		{E541B312-43D4-4EB7-931B-C3AF3D548A82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E541B312-43D4-4EB7-931B-C3AF3D548A82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E541B312-43D4-4EB7-931B-C3AF3D548A82}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CAE73444-27C4-4592-A072-6C8A68E9476A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CAE73444-27C4-4592-A072-6C8A68E9476A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CAE73444-27C4-4592-A072-6C8A68E9476A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CAE73444-27C4-4592-A072-6C8A68E9476A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

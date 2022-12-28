@@ -14,7 +14,7 @@ namespace ThePlayerComponents.Audio
 
         bool CanStop { get; }
 
-        string Filename { get; }
+        string? Filename { get; }
 
         bool HasMediaFoundationSupport { get; set; }
 
@@ -51,7 +51,7 @@ namespace ThePlayerComponents.Audio
 
         IList<AudioDevice> GetAllAudioDevices();
 
-        event EventHandler PlaybackFinished;
+        event EventHandler? PlaybackFinished;
         //event PlaybackInterruptedEventHandler PlaybackInterrupted;
     }
 }
