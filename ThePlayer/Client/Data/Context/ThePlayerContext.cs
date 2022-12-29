@@ -9,15 +9,15 @@ namespace ThePlayer.Client.Data.Context
 {
     public class ThePlayerContext : DbContext
     {
-        public ThePlayerContext() { }
-
         public IConfiguration Configuration { get; }
-        public DbContextOptions<ThePlayerContext> Options { get; }
+        //public DbContextOptions<ThePlayerContext> Options { get; }
 
+        public ThePlayerContext() { }
+       
         public ThePlayerContext(IConfiguration configuration, DbContextOptions<ThePlayerContext> options) : base(options)
         {
             Configuration = configuration;
-            Options = options;
+            //Options = options;
         }
 
         public virtual DbSet<AudioFile> AudioFiles { get; set; }
@@ -30,7 +30,7 @@ namespace ThePlayer.Client.Data.Context
         public void ConfigureServices(IServiceCollection services)
         {
             //  https://www.tektutorialshub.com/entity-framework-core/ef-core-dbcontext/
-            services.AddDbContext<ThePlayerContext>(Options => Options.UseSqlite(Configuration.GetConnectionString("ThePlayerDb")));
+            services.AddDbContext<ThePlayerContext>(options => options.UseSqlite(Configuration.GetConnectionString("ThePlayerDb")));
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
