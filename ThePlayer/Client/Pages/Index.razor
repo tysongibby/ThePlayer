@@ -1,0 +1,26 @@
+﻿@page "/"
+@using ThePlayer.Client.Data.Models;
+@using ThePlayer.Client.Data.Repositories.Interfaces;
+
+<h5>Music Files</h5>
+<ul>
+@foreach(AudioFile audioFile in AudioFiles)
+{
+    <li>@audioFile.FileName</li>
+}
+</ul>
+@code{
+    [Inject]
+    IAudioFileRepository AudioFileRepository { get; set; }
+
+    internal List<AudioFile> AudioFiles { get; set; }
+
+    protected override void OnInitialized()
+    {
+        AudioFiles = AudioFileRepository.GetAll().ToList();
+
+        base.OnInitialized();
+    }
+}
+
+
