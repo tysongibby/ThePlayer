@@ -1,10 +1,10 @@
 ﻿using GenericRepositoryForEfCore;
 using Microsoft.EntityFrameworkCore;
-using ThePlayer.Client.Data.Context;
-using ThePlayer.Client.Data.Models;
-using ThePlayer.Client.Data.Repositories.Interfaces;
+using ThePlayer.Shared.Data.Context;
+using ThePlayer.Shared.Data.Models;
+using ThePlayer.Shared.Data.Repositories.Interfaces;
 
-namespace ThePlayer.Client.Data.Repositories
+namespace ThePlayer.Shared.Data.Repositories
 {
     public class AudioFileRepository : GenericRepository<AudioFile>, IAudioFileRepository
     {

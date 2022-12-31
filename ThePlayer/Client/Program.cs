@@ -6,9 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
 using ThePlayer.Client;
-using ThePlayer.Client.Data.Context;
-using ThePlayer.Client.Data.Repositories;
-using ThePlayer.Client.Data.Repositories.Interfaces;
+using ThePlayer.Shared.Data.Context;
+using ThePlayer.Shared.Data.Repositories;
+using ThePlayer.Shared.Data.Repositories.Interfaces;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");

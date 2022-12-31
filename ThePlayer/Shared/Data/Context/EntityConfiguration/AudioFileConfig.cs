@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ThePlayer.Client.Data.Models;
+using ThePlayer.Shared.Data.Models;
 
-namespace ThePlayer.Context.EntityConfigurations
+namespace ThePlayer.Shared.Context.EntityConfigurations
 {
     class AudioFileConfig : IEntityTypeConfiguration<AudioFile>
     {

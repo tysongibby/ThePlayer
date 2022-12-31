@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ThePlayer.Client.Data.Models
+namespace ThePlayer.Shared.Data.Models
 {
     public class AudioFile
     {

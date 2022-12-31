@@ -1,7 +1,7 @@
 ﻿using GenericRepositoryForEfCore.Interfaces;
-using ThePlayer.Client.Data.Models;
+using ThePlayer.Shared.Data.Models;
 
-namespace ThePlayer.Client.Data.Repositories.Interfaces
+namespace ThePlayer.Shared.Data.Repositories.Interfaces
 {
     public interface IAudioFileRepository : IGenericRepository<AudioFile>
     {
