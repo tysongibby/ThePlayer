@@ -1,8 +1,9 @@
-﻿using GenericRepositoryForEfCore;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ThePlayer.Shared.Data.Context;
 using ThePlayer.Shared.Data.Models;
 using ThePlayer.Shared.Data.Repositories.Interfaces;
+using GenericRepositoryForEfCore;
+
 
 namespace ThePlayer.Shared.Data.Repositories
 {
