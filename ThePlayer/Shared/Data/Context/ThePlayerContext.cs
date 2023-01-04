@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ThePlayer.Client.Data.Models;
-using ThePlayer.Context.EntityConfigurations;
+using ThePlayer.Shared.Data.Models;
+using ThePlayer.Shared.Context.EntityConfigurations;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace ThePlayer.Client.Data.Context
+namespace ThePlayer.Shared.Data.Context
 {
     public class ThePlayerContext : DbContext
     {
@@ -27,11 +27,11 @@ namespace ThePlayer.Client.Data.Context
             modelBuilder.ApplyConfiguration<AudioFile>(new AudioFileConfig());
         }
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-            //  https://www.tektutorialshub.com/entity-framework-core/ef-core-dbcontext/
-            services.AddDbContext<ThePlayerContext>(options => options.UseSqlite(Configuration.GetConnectionString("ThePlayerDb")));
-        }
+        //public void ConfigureServices(IServiceCollection services)
+        //{
+        //    //  https://www.tektutorialshub.com/entity-framework-core/ef-core-dbcontext/
+        //    services.AddDbContext<ThePlayerContext>(options => options.UseSqlite(Configuration.GetConnectionString("ThePlayerDb")));
+        //}
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
