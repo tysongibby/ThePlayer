@@ -10,6 +10,7 @@ using ThePlayer.Shared.Data.Context;
 using ThePlayer.Shared.Data.Repositories;
 using ThePlayer.Shared.Data.Repositories.Interfaces;
 
+
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
