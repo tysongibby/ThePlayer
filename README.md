@@ -8,8 +8,8 @@ references:
 - File System Access API: https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API
 - The File System Access API: simplifying access to local files: https://developer.chrome.com/articles/file-system-access/
 - How to recursively read local files and directories in web browser using File System Access API https://stackoverflow.com/questions/64283711/how-to-recursively-read-local-files-and-directories-in-web-browser-using-file-sy
-- Getting Started With the File System Access APIhttps://css-tricks.com/getting-started-with-the-file-system-access-api/
-- <audio>: The Embed Audio element https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+- Getting Started With the File System Access API https://css-tricks.com/getting-started-with-the-file-system-access-api/
+- The Embed Audio element https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
 - HTMLAudioElement interface https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement
 - SQLite with EF Core in Blazor Wasm https://www.youtube.com/watch?v=2UPiKgHv8YE
 
