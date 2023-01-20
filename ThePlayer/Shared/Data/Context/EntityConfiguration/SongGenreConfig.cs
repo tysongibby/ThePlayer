@@ -9,20 +9,20 @@ using ThePlayer.Shared.Data.Models;
 
 namespace ThePlayer.Shared.Context.EntityConfigurations
 {
-    class AudioFileConfig : IEntityTypeConfiguration<AudioFile>
+    class SongGenreConfig : IEntityTypeConfiguration<SongGenre>
     {
-        public void Configure(EntityTypeBuilder<AudioFile> builder)
+        
+        public void Configure(EntityTypeBuilder<SongGenre> builder)
         {
             builder.HasData(
-                    new List<AudioFile>
+                    new List<SongGenre>
                     {
-                        new AudioFile{
+                        new SongGenre{
                             Id = 1,
-                            Path = $"/testmusic/head above water.mp3"                           
+                            Name = "Alternative Rock"
                         }
                     }
                 );
-
         }
 
     }

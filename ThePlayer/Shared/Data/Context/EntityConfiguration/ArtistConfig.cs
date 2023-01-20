@@ -9,16 +9,16 @@ using ThePlayer.Shared.Data.Models;
 
 namespace ThePlayer.Shared.Context.EntityConfigurations
 {
-    class AudioFileConfig : IEntityTypeConfiguration<AudioFile>
+    class ArtistConfig : IEntityTypeConfiguration<Artist>
     {
-        public void Configure(EntityTypeBuilder<AudioFile> builder)
+        public void Configure(EntityTypeBuilder<Artist> builder)
         {
             builder.HasData(
-                    new List<AudioFile>
+                    new List<Artist>
                     {
-                        new AudioFile{
+                        new Artist{
                             Id = 1,
-                            Path = $"/testmusic/head above water.mp3"                           
+                            Name = "Avril Lavigne"                        
                         }
                     }
                 );

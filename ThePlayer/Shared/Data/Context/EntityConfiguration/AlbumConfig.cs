@@ -9,16 +9,18 @@ using ThePlayer.Shared.Data.Models;
 
 namespace ThePlayer.Shared.Context.EntityConfigurations
 {
-    class AudioFileConfig : IEntityTypeConfiguration<AudioFile>
+    class AlbumConfig : IEntityTypeConfiguration<Album>
     {
-        public void Configure(EntityTypeBuilder<AudioFile> builder)
+        public void Configure(EntityTypeBuilder<Album> builder)
         {
             builder.HasData(
-                    new List<AudioFile>
+                    new List<Album>
                     {
-                        new AudioFile{
+                        new Album{
                             Id = 1,
-                            Path = $"/testmusic/head above water.mp3"                           
+                            Name = "Head Above Water",
+                            ArtistId = 1,
+                            GenreId = 1
                         }
                     }
                 );

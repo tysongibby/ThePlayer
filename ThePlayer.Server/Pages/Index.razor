@@ -1,0 +1,16 @@
+﻿@using ThePlayer.Server.Shared.Components;
+
+@page "/"
+
+<EAudio AudioFilePath="@FilePath"></EAudio>
+
+@code {
+
+    public string FilePath { get; set; }
+
+    protected override void OnInitialized()
+    {
+        FilePath = "";
+    }
+}
+

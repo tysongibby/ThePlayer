@@ -21,10 +21,18 @@ namespace ThePlayer.Shared.Data.Context
         }
 
         public virtual DbSet<AudioFile> AudioFiles { get; set; }
+        public virtual DbSet<SongGenre> SongGenres { get; set; }
+        public virtual DbSet<Artist> Artists { get; set; }
+        public virtual DbSet<Album> Albums { get; set; }
+        public virtual DbSet<Song> Songs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration<AudioFile>(new AudioFileConfig());
+            modelBuilder.ApplyConfiguration<SongGenre>(new SongGenreConfig());
+            modelBuilder.ApplyConfiguration<Artist>(new ArtistConfig());
+            modelBuilder.ApplyConfiguration<Album>(new AlbumConfig());                       
+            modelBuilder.ApplyConfiguration<Song>(new SongConfig());
         }
 
         //public void ConfigureServices(IServiceCollection services)
