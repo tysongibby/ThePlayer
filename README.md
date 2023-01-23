@@ -23,4 +23,8 @@ Lyrics API References:
 
 
 
+Userful terms:
+- Handle: In the Windows operating system, a handle is a unique identifier that is assigned to a system object such as a file, a process, or a thread. Handles are used to reference these objects within the operating system, and are typically used by system calls and API functions to access and manipulate the objects. They are also used by applications to access resources such as files and network connections. Handles are usually created and managed by the operating system, but can also be created and used by applications.
+- Directory Handle: In the Windows operating system, a directory handle is a handle that is used to refer to a specific directory or folder on a file system. It is a unique identifier assigned by the operating system when a directory is opened, and it can be used to access the files and subdirectories within that directory. The handle is used by various file system functions, such as CreateFile, ReadFile, and WriteFile, to perform operations on the directory.
+
 

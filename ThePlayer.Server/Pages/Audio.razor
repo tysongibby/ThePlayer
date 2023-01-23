@@ -1,0 +1,94 @@
+﻿@using System.Diagnostics;
+@using System.Text;
+@using System.Runtime.InteropServices;
+@using ThePlayer.Server.Shared.Components;
+@using ThePlayer.Shared.Helpers;
+@inject AudioPlayer Player;
+@implements IDisposable;
+
+<div class="file-actions">
+    <button @onclick="TogglePlayingAudioAsync" is-playing="@(playing is not null)">
+        <svg class="play-icon w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -1 26 26" fill="currentColor"><path fill-rule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clip-rule="evenodd" /></svg><svg class="stop-icon w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 28 28" fill="currentColor"><path fill-rule="evenodd" d="M4.5 7.5a3 3 0 013-3h9a3 3 0 013 3v9a3 3 0 01-3 3h-9a3 3 0 01-3-3v-9z" clip-rule="evenodd" /></svg>
+    </button>
+    @message
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public ClientFileAccess.JSFile File { get; set; } = default!;
+    WaveformSvg? svg;
+    IJSObjectReference? playing;
+    CancellationTokenSource disposalCts = new();
+    string? message;
+
+    record WaveformSvg(string TopPath, string BottomPath);
+    WaveformSvg GenerateWaveformSvg(byte[] samplesData)
+    {
+        // Generates repeated strings like "M 0 38 v 8"
+        var audioDataFloat = MemoryMarshal.Cast<byte, float>(samplesData);
+        var width = 400;
+        var height = 64;
+        var topPath = new StringBuilder(15 * width);
+        var botPath = new StringBuilder(15 * width);
+        var numSamples = audioDataFloat.Length;
+        var samplesPerColumn = numSamples / width;
+        var minusHalfHeight = -height / 2;
+        var midpointHeightStr = ((int)(height * 0.6)).ToString();
+        for (var x = 0; x < width; x++)
+        {
+            var chunk = audioDataFloat.Slice(x * samplesPerColumn, samplesPerColumn);
+            var min = chunk[0];
+            var max = chunk[0];
+            var sampleResolution = 8;
+            for (var i = sampleResolution; i < chunk.Length; i += sampleResolution)
+            {
+                ref var sample = ref chunk[i];
+                if (sample < min)
+                    min = sample;
+                if (sample > max)
+                    max = sample;
+            }
+
+            topPath.Append('M').Append(x).Append(' ').Append(midpointHeightStr).Append('v').Append((int)(minusHalfHeight * max));
+            botPath.Append('M').Append(x).Append(' ').Append(midpointHeightStr).Append('v').Append((int)(minusHalfHeight * min / 2));
+        }
+
+        return new WaveformSvg(topPath.ToString(), botPath.ToString());
+    }
+
+    async Task TogglePlayingAudioAsync()
+    {
+        if (playing is null)
+        {
+            // Toggle to play
+            playing = await Player.PlayAsync(File);
+        }
+        else
+        {
+            // Toggle to stop
+            await playing.InvokeVoidAsync("stop");
+            await playing.DisposeAsync();
+            playing = null;
+        }
+    }
+
+    async Task InitializeWaveformAsync()
+    {
+        var data = await Player.DecodeAudioFileAsync(File);
+        var sw = new Stopwatch();
+        await Task.Run(() =>
+        {
+            sw.Start();
+            svg = GenerateWaveformSvg(data);
+            sw.Stop();
+        }, disposalCts.Token);
+        message = $"{sw.ElapsedMilliseconds:F1}ms";
+    }
+
+    public void Dispose()
+    {
+        disposalCts.Cancel();
+    }
+}
+
+

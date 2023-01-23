@@ -1,5 +1,6 @@
 ﻿using Microsoft.JSInterop;
-
+using System.Threading.Tasks;
+using static ThePlayer.Shared.Helpers.ClientFileAccess;
 
 namespace ThePlayer.Shared.Helpers
 {
@@ -15,6 +16,11 @@ namespace ThePlayer.Shared.Helpers
             await InvokeAsync<object>("audioPlayer.play");
         }
 
+        public async ValueTask<IJSObjectReference> PlayAsync(JSFile file)
+        {
+            return await InvokeAsync<IJSObjectReference>("playAudioFile", file.Name);
+        }
+
         public async void Pause()
         {
             await InvokeAsync<object>("audioPlayer.pause");
@@ -28,6 +34,17 @@ namespace ThePlayer.Shared.Helpers
         public async void Repeat()
         {
             await InvokeAsync<object>("audioPlayer.repeat");
+        }
+
+        public async ValueTask<byte[]> DecodeAudioFileAsync(JSFile file)
+        {
+            return await InvokeAsync<byte[]>("decodeAudioFile", file.Name);
+        }
+
+
+        public async ValueTask<IJSObjectReference> PlayAudioDataAsync(byte[] data)
+        {
+            return await InvokeAsync<IJSObjectReference>("playAudioData", data);
         }
 
     }
