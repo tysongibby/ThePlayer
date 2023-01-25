@@ -11,7 +11,7 @@ using ThePlayer.Shared.Data.Context;
 namespace ThePlayer.Shared.Migrations
 {
     [DbContext(typeof(ThePlayerContext))]
-    [Migration("20230116190921_initial")]
+    [Migration("20230124051750_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

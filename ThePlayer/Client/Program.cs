@@ -9,6 +9,7 @@ using ThePlayer.Client;
 using ThePlayer.Shared.Data.Context;
 using ThePlayer.Shared.Data.Repositories;
 using ThePlayer.Shared.Data.Repositories.Interfaces;
+using MudBlazor.Services;
 
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -18,6 +19,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddDbContext<ThePlayerContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("ThePlayerDb")));
 builder.Services.AddScoped<IAudioFileRepository, AudioFileRepository>();
+builder.Services.AddMudServices();
 
 
 await builder.Build().RunAsync();

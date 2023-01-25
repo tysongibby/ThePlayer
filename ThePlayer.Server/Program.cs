@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MudBlazor.Services;
 using ThePlayer.Shared.Data.Context;
 using ThePlayer.Shared.Data.Repositories;
 using ThePlayer.Shared.Data.Repositories.Interfaces;
 using ThePlayer.Shared.Helpers;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddDbContext<ThePlayerContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("ThePlayerDb")));
-
+builder.Services.AddMudServices();
 builder.Services.AddScoped<ClientFileAccess>();
 builder.Services.AddScoped<AudioPlayer>();
 

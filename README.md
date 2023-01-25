@@ -28,3 +28,4 @@ Userful terms:
 - Directory Handle: In the Windows operating system, a directory handle is a handle that is used to refer to a specific directory or folder on a file system. It is a unique identifier assigned by the operating system when a directory is opened, and it can be used to access the files and subdirectories within that directory. The handle is used by various file system functions, such as CreateFile, ReadFile, and WriteFile, to perform operations on the directory.
 
 
+

@@ -26,19 +26,23 @@
 }
 
 @code {
+    // TODO: bookmark Build an Audio Browser app with Blazor | .NET Conf 2022 https://youtu.be/2t4VwBeQ9DY?t=721
     string? name;
     IQueryable<ClientFileAccess.JSFile>? files;
     string? searchName;
 
     //protected override async Task OnInitializedAsync()
     //{
-    //    await using var dir = await ClientFiles.ReopenLastDirectoryAsync();
-    //    if (dir is not null)
-    //    {
-    //        name = dir.Name;
-    //        files = (await ClientFiles.GetFilesAsync(dir)).AsQueryable();
-    //    }
+        //// TODO: JSInterop doesn't work in Prerender methods in net 6? (only in .NET 7?)
+        //await using var dir = await ClientFiles.ReopenLastDirectoryAsync();
+        //if (dir is not null)
+        //{
+        //    name = dir.Name;
+        //    files = (await ClientFiles.GetFilesAsync(dir)).AsQueryable();
+        //}
     //}
+
+
 
     async Task OpenDir()
     {
