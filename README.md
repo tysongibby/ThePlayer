@@ -1,5 +1,6 @@
 # The Player
-A music player that plays music
+A music player that plays music.
+This project is designed to leverage new tecnologies in .NET 6 that leverage Blazor Web Assemblies, specifically allowing 3 party libraries to be complied and deployed to the web browser client. In this case SQLite is the library being deployed as a Web Assmbly.
 
 references:
 - Build an Audio Browser app with Blazor | .NET Conf 2022 https://youtu.be/2t4VwBeQ9DY
@@ -8,8 +9,8 @@ references:
 - File System Access API: https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API
 - The File System Access API: simplifying access to local files: https://developer.chrome.com/articles/file-system-access/
 - How to recursively read local files and directories in web browser using File System Access API https://stackoverflow.com/questions/64283711/how-to-recursively-read-local-files-and-directories-in-web-browser-using-file-sy
-- Getting Started With the File System Access APIhttps://css-tricks.com/getting-started-with-the-file-system-access-api/
-- <audio>: The Embed Audio element https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+- Getting Started With the File System Access API https://css-tricks.com/getting-started-with-the-file-system-access-api/
+- The Embed Audio element https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
 - HTMLAudioElement interface https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement
 
 
