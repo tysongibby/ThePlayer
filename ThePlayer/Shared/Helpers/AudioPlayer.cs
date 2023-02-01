@@ -16,7 +16,7 @@ namespace ThePlayer.Shared.Helpers
             await InvokeAsync<object>("audioPlayer.play");
         }
 
-        public async ValueTask<IJSObjectReference> PlayAsync(JSFile file)
+        public async ValueTask<IJSObjectReference> PlayAsync(ClientFile file)
         {
             return await InvokeAsync<IJSObjectReference>("playAudioFile", file.Name);
         }
@@ -36,7 +36,7 @@ namespace ThePlayer.Shared.Helpers
             await InvokeAsync<object>("audioPlayer.repeat");
         }
 
-        public async ValueTask<byte[]> DecodeAudioFileAsync(JSFile file)
+        public async ValueTask<byte[]> DecodeAudioFileAsync(ClientFile file)
         {
             return await InvokeAsync<byte[]>("decodeAudioFile", file.Name);
         }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using static ThePlayer.Shared.Helpers.ClientFileAccess;
 
 namespace ThePlayer.Shared.Helpers
 {
@@ -14,36 +15,50 @@ namespace ThePlayer.Shared.Helpers
         }
 
         // CRUD operations
-        public async ValueTask<JSDirectory> AddAsync(string path, string fileName, object file)
-        {
-            throw new NotImplementedException();
-        }
-        public async ValueTask<JSDirectory> AddRangeAsync(string path, string fileName, IEnumerable<object> files)
-        {
-            throw new NotImplementedException();
-        }
-        public async ValueTask<JSDirectory> UpdateAsync(string path, string fileName, object file)
-        {
-            throw new NotImplementedException();
-        }
-        public async ValueTask<JSDirectory> RemoveAsync(string path, string fileName)
-        {
-            throw new NotImplementedException();
-        }
-        public async ValueTask<JSDirectory> RemoveRangeAsync(string path, string fileName, IEnumerable<object> files)
-        {
-            throw new NotImplementedException();
-        }
+        //public async ValueTask<JSDirectory> AddAsync(string path, string fileName, object file)
+        //{
+        //    throw new NotImplementedException();
+        //}
+        //public async ValueTask<JSDirectory> AddRangeAsync(string path, string fileName, IEnumerable<object> files)
+        //{
+        //    throw new NotImplementedException();
+        //}
+        //public async ValueTask<JSDirectory> UpdateAsync(string path, string fileName, object file)
+        //{
+        //    throw new NotImplementedException();
+        //}
+        //public async ValueTask<JSDirectory> RemoveAsync(string path, string fileName)
+        //{
+        //    throw new NotImplementedException();
+        //}
+        //public async ValueTask<JSDirectory> RemoveRangeAsync(string path, string fileName, IEnumerable<object> files)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         // Get operations
         public async ValueTask<JSDirectory> ShowDirectoryPickerAsync()
         {
-            return await InvokeAsync<JSDirectory>("showDirectoryPicker");
+            try
+            {
+                return await InvokeAsync<JSDirectory>("showDirectoryPicker");
+            }
+            catch (Exception e) 
+            {
+                throw new DirectoryNotFoundException(e.Message, e);
+            }
         }
 
         public async ValueTask<JSDirectory> ReopenLastDirectoryAsync()
         {
-            return await InvokeAsync<JSDirectory>("reopenLastDirectory");
+            try
+            {
+                return await InvokeAsync<JSDirectory>("reopenLastDirectory");
+            }
+            catch (Exception e)
+            {
+                throw new DirectoryNotFoundException(e.Message, e);
+            }
         }
 
         //public async ValueTask<JSFile> GetFileAsync(string path)
@@ -52,28 +67,51 @@ namespace ThePlayer.Shared.Helpers
         //    //return await InvokeAsync<JSFile>("getFile", path); // needs js function
         //}
 
-        // TODO: Priority 1 - Get Files from Client
-        public async ValueTask<JSFile[]> GetFilesAsync(JSDirectory directory)
+        // Get Files from Client
+        public async ValueTask<ClientFile[]> GetFilesAsync(JSDirectory directory)
         {
-            return await InvokeAsync<JSFile[]>("getFiles", directory.Instance);
+            if(directory == null)
+            {
+                throw new ArgumentNullException(nameof(directory));
+            }
+
+            try
+            {            
+                return await InvokeAsync<ClientFile[]>("getFiles", directory.Instance);
+            }
+            catch (Exception e)
+            {
+                throw new DirectoryNotFoundException(e.Message, e);
+            }
         }
 
-        public async ValueTask<byte[]> DecodeAudioFileAsync(JSFile file)
+        public async ValueTask<byte[]> DecodeAudioFileAsync(ClientFile file)
         {
-            return await InvokeAsync<byte[]>("decodeAudioFile", file.Name);
+            if (file == null)
+            {
+                throw new ArgumentNullException(nameof(file));
+            }
+
+            try
+            {
+                return await InvokeAsync<byte[]>("decodeAudioFile", file.Name);
+            }
+            catch(Exception e) 
+            {
+                throw new FileNotFoundException(e.Message, e);
+            }
         }
 
 
         // Records
         public record JSDirectory(string Name, IJSObjectReference Instance) : IAsyncDisposable
         {
-            // When .NET is done with this JSDirectory, also release the underlying JS object
-            //public ValueTask DisposeAsync() => Instance.DisposeAsync();
+            // When .NET is done with this JSDirectory, also release the underlying JS object            
             public ValueTask DisposeAsync()
             {
                 return Instance.DisposeAsync();
             }
         }
-        public record JSFile(string Name, long Size, DateTime LastModified, string Artist);
+        public record ClientFile(string Name, long Size, DateTime LastModified, string Artist);        
     }
 }

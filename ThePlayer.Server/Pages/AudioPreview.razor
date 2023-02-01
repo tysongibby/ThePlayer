@@ -1,0 +1,20 @@
+@using ThePlayer.Server.Shared.Components;
+@using ThePlayer.Shared.Helpers;
+@inject AudioPlayer Player;
+@inject ClientFileAccess ClientFileAccess;
+
+@message
+
+@code{
+    [Parameter, EditorRequired]
+    public ClientFileAccess.ClientFile ClientFile { get; set; } = default!;
+
+    string? message;
+
+    protected override async Task OnInitializedAsync()
+    {
+        byte[] data = await ClientFileAccess.DecodeAudioFileAsync(ClientFile);
+        message = $"Decoded {data.Length} bytes";
+
+    }
+}

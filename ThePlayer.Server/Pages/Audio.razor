@@ -15,7 +15,7 @@
 
 @code {
     [Parameter, EditorRequired]
-    public ClientFileAccess.JSFile File { get; set; } = default!;
+    public ClientFileAccess.ClientFile File { get; set; } = default!;
     WaveformSvg? svg;
     IJSObjectReference? playing;
     CancellationTokenSource disposalCts = new();
