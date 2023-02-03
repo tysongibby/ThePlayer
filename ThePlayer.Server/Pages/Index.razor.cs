@@ -23,11 +23,15 @@ namespace ThePlayer.Server.Pages
     public partial class Index
     {       
         // TODO: bookmark for Build an Audio Browser app with Blazor | .NET Conf 2022 https://youtu.be/2t4VwBeQ9DY?t=1317
-        string? name;
-        IQueryable<ClientFileAccess.ClientFile>? files;
-        string? searchName;
+        
+        internal string DirectoryName { get; set; }
+        IQueryable<ClientFileAccess.ClientFile> files;        
+        ClientFile SelectedFile { get; set; }
+
         // MudGrid variables
         private string searchString;
+
+
         //protected override async Task OnInitializedAsync()
         //{
         //// TODO: JSInterop doesn't work in Prerender methods in net 6? (only in .NET 7?)
@@ -38,12 +42,13 @@ namespace ThePlayer.Server.Pages
         //    files = (await ClientFiles.GetFilesAsync(dir)).AsQueryable();
         //}
         //}
+
         async Task OpenDir()
         {
             try
             {
                 await using var dir = await ClientFiles.ShowDirectoryPickerAsync();
-                name = dir.Name;
+                DirectoryName = dir.Name;
                 files = (await ClientFiles.GetFilesAsync(dir)).AsQueryable();
             }
             catch
@@ -64,5 +69,15 @@ namespace ThePlayer.Server.Pages
             //    return true;
             return false;
         };
+
+        public void PlayAudioFile(ClientFile audioFile)
+        {
+
+        }
+
+        public void SelectFile()
+        {
+
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace ThePlayer.Shared.Helpers
     // requires clientFileAccess.js
     public class ClientFileAccess : JSModuleBase
     {
-        public ClientFileAccess(IJSRuntime js) : base(js, "/js/audioFileAccess.js")
+        public ClientFileAccess(IJSRuntime js) : base(js, "./_content/Shared/js/clientFileAccess.js")
         {
         }
 
