@@ -27,20 +27,46 @@ export async function reopenLastDirectory() {
 //    return result.map(r => ({ name: r.name, size: r.size, lastModified: r.lastModifiedDate.toISOString(), artist: r.artist }));
 //}
 
-export async function getFiles(directoryHandle) {
+// original version without path falue
+//export async function getFiles(directoryHandle) {
+//    let files = [];
+//    for await (const handle of directoryHandle.values()) {
+//        if (handle.kind === 'directory') {
+//            files.push(...await getFiles(handle));
+//        }
+//        else if (handle.kind === 'file') {
+//            const isMusicFile = hasMusicFileExtension(handle);
+//            if (isMusicFile) {
+//                files.push(await handle.getFile())
+//            }
+//        }
+//    }
+//    return files.map(r => ({ name: r.name, size: r.size }));
+//}
+
+export async function getFiles(directoryHandle, relativePath) {
     let files = [];
+    
+    relativePath += '/' + directoryHandle.name;
+    if (relativePath.startsWith('undefined')) {
+        relativePath = relativePath.slice(9);
+    }
+
     for await (const handle of directoryHandle.values()) {
         if (handle.kind === 'directory') {
-            files.push(...await getFiles(handle));
+            files.push(...await getFiles(handle, relativePath));
         }
         else if (handle.kind === 'file') {
             const isMusicFile = hasMusicFileExtension(handle);
             if (isMusicFile) {
-                files.push(await handle.getFile())
+                const file = await handle.getFile();                
+                files.push({ name: file.name, size: file.size, relativePath: relativePath });
             }
         }
+        
     }
-    return files.map(r => ({ name: r.name, size: r.size }));
+    relativePath = null;
+    return files;
 }
 
 function hasMusicFileExtension(handle) {
@@ -68,34 +94,3 @@ function fileListExtensionFilter(fileNameList, extensionFilterList) {
 }
 
 
-export async function decodeAudioFile(name) {
-    // Read the file
-    const dir = history.state.currentDir;
-    const fileHandle = await dir.getFileHandle(name);
-    const file = await fileHandle.getFile();
-    const fileBytes = await file.arrayBuffer();
-
-    // Decode and extract the audio samples
-    const audioBuffer = await new AudioContext().decodeAudioData(fileBytes);
-    return new Uint8Array(audioBuffer.getChannelData(0).buffer);
-}
-
-export async function playAudioFile(name) {
-    const samples = await decodeAudioFile(name);
-    return playAudioData(samples);
-}
-
-export async function playAudioData(samples) {
-    // Populate an AudioBuffer object
-    const floatData = new Float32Array(samples.buffer);
-    const audioContext = new AudioContext();
-    const buffer = audioContext.createBuffer(/*numOfChannels*/ 1, floatData.length, /*sampleRate*/ 48000);
-    buffer.copyToChannel(floatData, 0);
-
-    // Start playing it
-    const source = audioContext.createBufferSource();
-    source.buffer = buffer;
-    source.connect(audioContext.destination);
-    source.start();
-    return source;
-}

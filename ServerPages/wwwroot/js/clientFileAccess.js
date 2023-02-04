@@ -36,11 +36,12 @@ export async function getFiles(directoryHandle) {
         else if (handle.kind === 'file') {
             const isMusicFile = hasMusicFileExtension(handle);
             if (isMusicFile) {
-                files.push(await handle.getFile())
+                const file = await handle.getFile();
+                files.push({ name: file.name, size: file.size, path: handle.path });
             }
         }
     }
-    return files.map(r => ({ name: r.name, size: r.size }));
+    return files;
 }
 
 function hasMusicFileExtension(handle) {

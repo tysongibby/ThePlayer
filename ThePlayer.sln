@@ -12,8 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerPages", "ServerPages\ServerPages.csproj", "{328CABFF-2D48-45DB-A0F3-1A536CC23C57}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientSqlLite", "ClientSqlLite\ClientSqlLite.csproj", "{E7C690DA-EBB1-44C7-9BBB-A6AC30E118BA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{132B3AFD-53DB-4C58-BD5E-9C5856899D9D}"
@@ -32,10 +30,6 @@ Global
 		{D9489770-4E3A-4330-92DE-FC724F059D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9489770-4E3A-4330-92DE-FC724F059D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9489770-4E3A-4330-92DE-FC724F059D28}.Release|Any CPU.Build.0 = Release|Any CPU
-		{328CABFF-2D48-45DB-A0F3-1A536CC23C57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{328CABFF-2D48-45DB-A0F3-1A536CC23C57}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{328CABFF-2D48-45DB-A0F3-1A536CC23C57}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{328CABFF-2D48-45DB-A0F3-1A536CC23C57}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E7C690DA-EBB1-44C7-9BBB-A6AC30E118BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E7C690DA-EBB1-44C7-9BBB-A6AC30E118BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7C690DA-EBB1-44C7-9BBB-A6AC30E118BA}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -13,30 +13,31 @@ namespace ClientFileApi
         {
         }
 
-        public async void Play()
-        {
-            await InvokeAsync<object>("audioPlayer.play");
-        }
+        //public async void Play()
+        //{
+        //    await InvokeAsync<object>("audioPlayer.play");
+        //}
+        //public async void Pause()
+        //{
+        //    await InvokeAsync<object>("audioPlayer.pause");
+        //}
+
+        //public async void Stop()
+        //{
+        //    await InvokeAsync<object>("audioPlayer.stop");
+        //}
+
+        //public async void Repeat()
+        //{
+        //    await InvokeAsync<object>("audioPlayer.repeat");
+        //}
 
         public async ValueTask<IJSObjectReference> PlayAsync(ClientFile file)
         {
             return await InvokeAsync<IJSObjectReference>("playAudioFile", file.Name);
         }
 
-        public async void Pause()
-        {
-            await InvokeAsync<object>("audioPlayer.pause");
-        }
 
-        public async void Stop()
-        {
-            await InvokeAsync<object>("audioPlayer.stop");
-        }
-
-        public async void Repeat()
-        {
-            await InvokeAsync<object>("audioPlayer.repeat");
-        }
 
         public async ValueTask<IJSObjectReference> PlayAudioDataAsync(byte[] data)
         {

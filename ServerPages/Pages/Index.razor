@@ -3,6 +3,7 @@
 @using ClientFileApi;
 @using static ClientFileApi.ClientFileAccess;
 @using NeoSmart.PrettySize;
+@using ServerPages.Shared.Components;
 @inject ClientFileAccess ClientFiles;
 
 <MudAppBar Class="gap-2">   
@@ -55,10 +56,11 @@
         <Columns>
             <Column T="ClientFile" Title="Name" Field="Name" Sortable="true" />
             <Column T="ClientFile" Title="Size" Field="Size" Sortable="true" />
-            <Column T="ClientFile" Title="Last Modified" Field="LastModified" Sortable="true" />
+            <Column T="ClientFile" Title="Path" Field="Path" Sortable="true" />
             <Column T="ClientFile" Title="Audio">
                 <CellTemplate>                                        
-                    <Audio File="@context.Item"></Audio>
+                    @*<Audio File="@context.Item"></Audio>*@
+                    <EAudio AudioFilePath="@context.Item.Path"></EAudio>
                 </CellTemplate>
             </Column>          
         </Columns> 

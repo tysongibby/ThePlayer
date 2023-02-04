@@ -10,6 +10,7 @@ using Data.Context;
 using Data.Repositories;
 using Data.Repositories.Interfaces;
 using MudBlazor.Services;
+using ClientFileApi;
 
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -17,9 +18,11 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-builder.Services.AddDbContext<ThePlayerContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("ThePlayerDb")));
-builder.Services.AddScoped<IAudioFileRepository, AudioFileRepository>();
+//builder.Services.AddDbContext<ThePlayerContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("ThePlayerDb")));
+//builder.Services.AddScoped<IAudioFileRepository, AudioFileRepository>();
 builder.Services.AddMudServices();
+builder.Services.AddScoped<ClientFileAccess>();
+builder.Services.AddScoped<AudioPlayer>();
 
 
 await builder.Build().RunAsync();

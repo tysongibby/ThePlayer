@@ -1,26 +1,69 @@
 ﻿@page "/"
-@using Data.Models;
-@using Data.Repositories.Interfaces;
+@using Microsoft.AspNetCore.Components.QuickGrid;
+@using ClientFileApi;
+@using static ClientFileApi.ClientFileAccess;
+@using NeoSmart.PrettySize;
+@using ClientPages.Shared;
+@inject ClientFileAccess ClientFiles;
 
-<h5>Music Files</h5>
-<ul>
-@foreach(AudioFile audioFile in AudioFiles)
-{
-    <li>@audioFile.Path</li>
-}
-</ul>
-@code{
-    [Inject]
-    IAudioFileRepository AudioFileRepository { get; set; }
-
-    internal List<AudioFile> AudioFiles { get; set; }
-
-    protected override void OnInitialized()
+<MudAppBar Class="gap-2">   
+    
+    <MudSpacer />
+    <MudButton Variant="Variant.Filled" Color="Color.Warning" OnClick="OpenDir" StartIcon="@Icons.Custom.Uncategorized.Folder">
+        <MudText>Load Music</MudText>
+        @*<MudIconButton Icon="@Icons.Custom.Uncategorized.Folder" Color="Color.Inherit" />*@
+    </MudButton>    
+    
+    @if (files is not null)
     {
-        AudioFiles = AudioFileRepository.GetAll().ToList();
-
-        base.OnInitialized();
+        <MudText>@files.Count() songs</MudText>
     }
-}
+</MudAppBar>
 
+@if (files is not null)
+{
+@*    <QuickGrid Items="files" Class="files-grid" Virtualize="true" ItemSize="64">
+        <PropertyColumn Property="@(f => f.Name)" Sortable="true">
+            <ColumnOptions>
+                <div class="search-box">
+                    <input type="search" 
+                           @bind="searchString" 
+                           @bind:event="oninput"
+                           autofocus placeholder="Name..." />
+                </div>
+            </ColumnOptions>
+        </PropertyColumn>        
+        <PropertyColumn Title="Size" Property="@(f => new PrettySize(f.Size))" Sortable="true" />
+        <PropertyColumn Title="Modified" Property="@(f => f.LastModified)" Sortable="true" />
+        <TemplateColumn Title="Audio">
+            <Audio File="@context" />
+        </TemplateColumn>
+    </QuickGrid>*@
+
+
+
+    <MudDataGrid Items="@files" SortMode="SortMode.Multiple" QuickFilter="@quickFilter">
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Music List</MudText>
+            <MudSpacer />
+            <MudTextField @bind-Value="searchString" 
+                          Placeholder="Search" 
+                          Adornment="Adornment.Start" 
+                          Immediate="true"
+                          AdornmentIcon="@Icons.Material.Filled.Search" 
+                          IconSize="Size.Medium" Class="mt-0" />            
+        </ToolBarContent>
+        <Columns>
+            <Column T="ClientFile" Title="Name" Field="Name" Sortable="true" />
+            <Column T="ClientFile" Title="Size" Field="Size" Sortable="true" />
+            <Column T="ClientFile" Title="Relative Path" Field="RelativePath" Sortable="true" />
+            <Column T="ClientFile" Title="Audio">
+                <CellTemplate>                                        
+                    <Audio File="@context.Item" JsRuntime="JsRuntime"></Audio>
+                    @*<EAudio AudioFilePath="@context.Item.Path"></EAudio>*@
+                </CellTemplate>
+            </Column>          
+        </Columns> 
+    </MudDataGrid>    
+}
 

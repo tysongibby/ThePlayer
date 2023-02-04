@@ -1,0 +1,78 @@
+﻿
+@*https://www.w3schools.com/tags/tag_audio.asp*@
+<audio id="@Id" controls="@ShowControls" loop="@Loop" controlsList="@controlList" autoplay="@AutoPlay">
+    @if (String.IsNullOrWhiteSpace(FileTypeString))
+    {
+        <source src="@AudioFilePath" />
+    }
+    else
+    {
+        <source src="@AudioFilePath" type="@FileTypeString" />
+    }
+    <p>Not supported</p>
+</audio>
+
+@code {
+    [Parameter]
+    public string Id { get; set; } = "audio";
+    [Parameter, EditorRequired]
+    public string AudioFilePath { get; set; }
+    [Parameter]
+    public bool Loop { get; set; } = false;
+    [Parameter]
+    public bool AllowDownload { get; set; } = false;
+    [Parameter]
+    public bool AllowPlaybackRate { get; set; } = true;
+    [Parameter]
+    public bool ShowControls { get; set; } = true;
+    [Parameter]
+    public AudioFileType FileType { get; set; } = 0;
+    [Parameter]
+    public bool AutoPlay { get; set; } = false;
+    [Parameter]
+    public string NotSupported { get; set; } = "Your browser does not support HTML 5 media or it does not support this audio file type.";
+
+    public string FileTypeString { get; set; } = string.Empty;
+
+    private string controlList = string.Empty;
+
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        // set audio control list options
+        if (!AllowDownload)
+        {
+            controlList = controlList + "nodownload ";
+        }
+        if (!AllowPlaybackRate)
+        {
+            controlList = controlList + "noplaybackrate ";
+        }
+
+        // if enum FileType > 0 (none) then set value to FileTypeString to be used in audio element type property
+        // else set FiletypeString to empty.
+        if (FileType > 0)
+        {
+            FileTypeString = $"audio/{FileType.ToString()}";
+        }
+        else
+        {
+            FileTypeString = string.Empty;
+        }
+    }
+
+    public enum AudioFileType
+    {
+        none = 0,
+        aac = 1,
+        mp3 = 2,
+        mp4 = 3,
+        mpeg = 4,
+        oog = 5,
+        vorbis = 6,
+        wav = 7
+    }
+
+}

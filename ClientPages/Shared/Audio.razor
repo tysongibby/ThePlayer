@@ -1,6 +1,12 @@
 ﻿@using System.Threading;
-@using ServerPages.Shared.Components;
+@using ClientPages.Shared;
 @using ClientFileApi;    
+@using System;
+@using System.Threading.Tasks;
+@using Microsoft.AspNetCore.Components;
+@using Microsoft.JSInterop;
+@using System.Runtime.InteropServices;
+@using System.Text;
 @inject AudioPlayer Player;
 
 @*<svg @onclick="@OnInitializedAsync" class="waveform" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -9,6 +15,8 @@
 </svg>*@
 
 <MudIconButton OnClick="TogglePlayingAudioAsync" Icon="Icons.Material.Filled.PlayArrow" is-playing="@(playing is not null)" />
+
+
 
 
  

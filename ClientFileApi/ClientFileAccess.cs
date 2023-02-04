@@ -10,12 +10,12 @@ namespace ClientFileApi
     // requires clientFileAccess.js
     public class ClientFileAccess : JSModuleBase
     {
-        //public ClientFileAccess(IJSRuntime js) : base(js, "./_content/ClientFileApi/js/clientFileAccess.js")
-        //{
-        //}
-        public ClientFileAccess(IJSRuntime js) : base(js, "/js/clientFileAccess.js")
+        public ClientFileAccess(IJSRuntime js) : base(js, "./_content/ClientFileApi/js/clientFileAccess.js")
         {
         }
+        //public ClientFileAccess(IJSRuntime js) : base(js, "/js/clientFileAccess.js")
+        //{
+        //}
 
         // CRUD operations
         //public async ValueTask<JSDirectory> AddAsync(string path, string fileName, object file)
@@ -98,6 +98,6 @@ namespace ClientFileApi
                 return Instance.DisposeAsync();
             }
         }
-        public record ClientFile(string Name, long Size, DateTime LastModified, string Artist);
+        public record ClientFile(string Name, long Size, string RelativePath);
     }
 }
