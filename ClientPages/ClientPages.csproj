@@ -27,8 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ClientFileApi\ClientFileApi.csproj" />
-    <ProjectReference Include="..\..\Data\Data.csproj" />
+    <ProjectReference Include="..\ClientFileApi\ClientFileApi.csproj" />
+    <ProjectReference Include="..\Data\Data.csproj" />
   </ItemGroup>
 
 </Project>

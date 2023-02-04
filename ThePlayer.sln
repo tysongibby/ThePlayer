@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThePlayer.Client", "ThePlayer\Client\ThePlayer.Client.csproj", "{BEAD9B6D-E122-4ECB-B27E-45DC3814B571}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientPages", "ClientPages\ClientPages.csproj", "{BEAD9B6D-E122-4ECB-B27E-45DC3814B571}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientFileApi", "ClientFileApi\ClientFileApi.csproj", "{D9489770-4E3A-4330-92DE-FC724F059D28}"
 EndProject
