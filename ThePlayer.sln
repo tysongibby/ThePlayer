@@ -14,9 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerPages", "ServerPages\ServerPages.csproj", "{328CABFF-2D48-45DB-A0F3-1A536CC23C57}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlLiteEf", "SqlLiteEf\SqlLiteEf.csproj", "{E7C690DA-EBB1-44C7-9BBB-A6AC30E118BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientSqlLite", "ClientSqlLite\ClientSqlLite.csproj", "{E7C690DA-EBB1-44C7-9BBB-A6AC30E118BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{132B3AFD-53DB-4C58-BD5E-9C5856899D9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{132B3AFD-53DB-4C58-BD5E-9C5856899D9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
