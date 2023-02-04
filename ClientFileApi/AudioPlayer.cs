@@ -7,7 +7,7 @@ namespace ClientFileApi
     // requires audioPlayer.js
     public class AudioPlayer : JSModuleBase
     {
-        public AudioPlayer(IJSRuntime js) : base(js, "./js/audioPlayer.js")
+        public AudioPlayer(IJSRuntime js) : base(js, "./_content/ClientFileApi/js/audioPlayer.js")
         {
         }
 

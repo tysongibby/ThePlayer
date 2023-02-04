@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
-using ThePlayer.Client;
+using ClientPages;
 using Data.Context;
 using Data.Repositories;
 using Data.Repositories.Interfaces;
