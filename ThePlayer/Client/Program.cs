@@ -6,9 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
 using ThePlayer.Client;
-using ThePlayer.Shared.Data.Context;
-using ThePlayer.Shared.Data.Repositories;
-using ThePlayer.Shared.Data.Repositories.Interfaces;
+using Data.Context;
+using Data.Repositories;
+using Data.Repositories.Interfaces;
 using MudBlazor.Services;
 
 

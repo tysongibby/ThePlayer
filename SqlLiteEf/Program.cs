@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore;
 using System;
-using ThePlayer.Shared.Data.Context;
+using Data.Context;
 
 Console.WriteLine("Hello, World!");
 

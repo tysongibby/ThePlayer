@@ -1,0 +1,32 @@
+﻿@using ClientFileApi;
+@inject ClientFileAccess ClientFiles;
+
+<MudAppBar>        
+    <MudButton Variant="Variant.Filled" StartIcon="@Icons.Custom.Uncategorized.Folder" Color="Color.Warning" OnClick="OpenDir">        
+            @(name ?? "Open...")
+    </MudButton>
+        @if (files is not null)
+        {
+            <span>@files.Count() files</span>
+        }
+</MudAppBar>
+
+@code{
+    string? name;
+    IQueryable<ClientFileAccess.ClientFile>? files;
+    string? searchName;
+
+    async Task OpenDir()
+    {
+        try
+        {
+            await using var dir = await ClientFiles.ShowDirectoryPickerAsync();
+            name = dir.Name;
+            files = (await ClientFiles.GetFilesAsync(dir)).AsQueryable();
+        }
+        catch
+        {
+            // User cancelled
+        }
+    }
+}

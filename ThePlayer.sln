@@ -5,16 +5,18 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThePlayer.Client", "ThePlayer\Client\ThePlayer.Client.csproj", "{BEAD9B6D-E122-4ECB-B27E-45DC3814B571}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThePlayer.Shared", "ThePlayer\Shared\ThePlayer.Shared.csproj", "{D9489770-4E3A-4330-92DE-FC724F059D28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientFileApi", "ClientFileApi\ClientFileApi.csproj", "{D9489770-4E3A-4330-92DE-FC724F059D28}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{83DA8320-95EC-403B-9590-578182168AF0}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThePlayer.Server", "ThePlayer.Server\ThePlayer.Server.csproj", "{328CABFF-2D48-45DB-A0F3-1A536CC23C57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerPages", "ServerPages\ServerPages.csproj", "{328CABFF-2D48-45DB-A0F3-1A536CC23C57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlLiteEf", "SqlLiteEf\SqlLiteEf.csproj", "{E7C690DA-EBB1-44C7-9BBB-A6AC30E118BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlLiteEf", "SqlLiteEf\SqlLiteEf.csproj", "{E7C690DA-EBB1-44C7-9BBB-A6AC30E118BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{132B3AFD-53DB-4C58-BD5E-9C5856899D9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{E7C690DA-EBB1-44C7-9BBB-A6AC30E118BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7C690DA-EBB1-44C7-9BBB-A6AC30E118BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7C690DA-EBB1-44C7-9BBB-A6AC30E118BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{132B3AFD-53DB-4C58-BD5E-9C5856899D9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{132B3AFD-53DB-4C58-BD5E-9C5856899D9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{132B3AFD-53DB-4C58-BD5E-9C5856899D9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{132B3AFD-53DB-4C58-BD5E-9C5856899D9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,52 @@
+﻿@page "/"
+@using ClientFileApi;
+@using static ClientFileApi.ClientFileAccess;
+@using NeoSmart.PrettySize;
+@inject ClientFileAccess ClientFiles;
+
+<MudAppBar Class="gap-2">   
+    
+    <MudSpacer />
+    <MudButton Variant="Variant.Filled" Color="Color.Warning" OnClick="OpenDir" StartIcon="@Icons.Custom.Uncategorized.Folder">
+        <MudText>Load Music</MudText>
+        @*<MudIconButton Icon="@Icons.Custom.Uncategorized.Folder" Color="Color.Inherit" />*@
+    </MudButton>    
+    
+    @if (files is not null)
+    {
+        <MudText>@files.Count() songs</MudText>
+    }
+</MudAppBar>
+
+@if (files is not null)
+{
+    <MudDataGrid Items="@files" SortMode="SortMode.Multiple" QuickFilter="@quickFilter">
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Music List</MudText>
+            <MudSpacer />
+            <MudTextField @bind-Value="searchString" 
+                          Placeholder="Search" 
+                          Adornment="Adornment.Start" 
+                          Immediate="true"
+                          AdornmentIcon="@Icons.Material.Filled.Search" 
+                          IconSize="Size.Medium" Class="mt-0" />            
+        </ToolBarContent>
+        <Columns>
+            <Column T="ClientFile" Title="Name" Field="Name" Sortable="true" />
+            <Column T="ClientFile" Title="Size" Field="Size" Sortable="true" />
+            <Column T="ClientFile" Title="Last Modified" Field="LastModified" Sortable="true" />
+            <Column T="ClientFile" Title="Audio">
+                <CellTemplate>                                        
+                    <Audio File="context.Item"></Audio>
+                </CellTemplate>
+            </Column>
+@*            <Column T="ClientFile" Title="Preview">
+                <CellTemplate>
+                    <AudioPreview ClientFile="@context.Item"></AudioPreview>
+                </CellTemplate>
+            </Column>*@
+            
+        </Columns> 
+    </MudDataGrid>    
+}
+
