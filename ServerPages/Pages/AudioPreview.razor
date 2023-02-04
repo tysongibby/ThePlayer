@@ -1,6 +1,6 @@
 @using ServerPages.Shared.Components;
 @using ClientFileApi;
-@inject AudioPlayer Player;
+@inject AudioPlayer AudioPlayer;
 @inject ClientFileAccess ClientFileAccess;
 
 @message
@@ -9,11 +9,11 @@
     [Parameter, EditorRequired]
     public ClientFileAccess.ClientFile ClientFile { get; set; } = default!;
 
-    string? message;
+    string message;
 
     protected override async Task OnInitializedAsync()
     {
-        byte[] data = await ClientFileAccess.DecodeAudioFileAsync(ClientFile);
+        byte[] data = await AudioPlayer.DecodeAudioFileAsync(ClientFile);
         message = $"Decoded {data.Length} bytes";
 
     }

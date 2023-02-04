@@ -33,13 +33,13 @@ namespace ServerPages.Pages
 
         //protected override async Task OnInitializedAsync()
         //{
-        //// TODO: JSInterop doesn't work in Prerender methods in net 6? (only in .NET 7?)
-        //await using var dir = await ClientFiles.ReopenLastDirectoryAsync();
-        //if (dir is not null)
-        //{
-        //    name = dir.Name;
-        //    files = (await ClientFiles.GetFilesAsync(dir)).AsQueryable();
-        //}
+        //    // TODO: JSInterop doesn't work in Prerender methods in net 6? (only in .NET 7?)
+        //    await using var dir = await ClientFiles.ReopenLastDirectoryAsync();
+        //    if (dir is not null)
+        //    {
+        //        DirectoryName = dir.Name;
+        //        files = (await ClientFiles.GetFilesAsync(dir)).AsQueryable();
+        //    }
         //}
 
         async Task OpenDir()

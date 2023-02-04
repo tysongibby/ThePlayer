@@ -1,4 +1,6 @@
 ﻿using Microsoft.JSInterop;
+using System.IO;
+using System;
 using System.Threading.Tasks;
 using static ClientFileApi.ClientFileAccess;
 
@@ -36,15 +38,26 @@ namespace ClientFileApi
             await InvokeAsync<object>("audioPlayer.repeat");
         }
 
-        public async ValueTask<byte[]> DecodeAudioFileAsync(ClientFile file)
-        {
-            return await InvokeAsync<byte[]>("decodeAudioFile", file.Name);
-        }
-
-
         public async ValueTask<IJSObjectReference> PlayAudioDataAsync(byte[] data)
         {
             return await InvokeAsync<IJSObjectReference>("playAudioData", data);
+        }
+
+        public async ValueTask<byte[]> DecodeAudioFileAsync(ClientFile file)
+        {
+            if (file == null)
+            {
+                throw new ArgumentNullException(nameof(file));
+            }
+
+            try
+            {
+                return await InvokeAsync<byte[]>("decodeAudioFile", file.Name);
+            }
+            catch (Exception e)
+            {
+                throw new FileNotFoundException(e.Message, e);
+            }
         }
 
     }

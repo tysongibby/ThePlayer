@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using Microsoft.AspNetCore.Components.QuickGrid;
 @using ClientFileApi;
 @using static ClientFileApi.ClientFileAccess;
 @using NeoSmart.PrettySize;
@@ -20,6 +21,26 @@
 
 @if (files is not null)
 {
+@*    <QuickGrid Items="files" Class="files-grid" Virtualize="true" ItemSize="64">
+        <PropertyColumn Property="@(f => f.Name)" Sortable="true">
+            <ColumnOptions>
+                <div class="search-box">
+                    <input type="search" 
+                           @bind="searchString" 
+                           @bind:event="oninput"
+                           autofocus placeholder="Name..." />
+                </div>
+            </ColumnOptions>
+        </PropertyColumn>        
+        <PropertyColumn Title="Size" Property="@(f => new PrettySize(f.Size))" Sortable="true" />
+        <PropertyColumn Title="Modified" Property="@(f => f.LastModified)" Sortable="true" />
+        <TemplateColumn Title="Audio">
+            <Audio File="@context" />
+        </TemplateColumn>
+    </QuickGrid>*@
+
+
+
     <MudDataGrid Items="@files" SortMode="SortMode.Multiple" QuickFilter="@quickFilter">
         <ToolBarContent>
             <MudText Typo="Typo.h6">Music List</MudText>
@@ -37,15 +58,9 @@
             <Column T="ClientFile" Title="Last Modified" Field="LastModified" Sortable="true" />
             <Column T="ClientFile" Title="Audio">
                 <CellTemplate>                                        
-                    <Audio File="context.Item"></Audio>
+                    <Audio File="@context.Item"></Audio>
                 </CellTemplate>
-            </Column>
-@*            <Column T="ClientFile" Title="Preview">
-                <CellTemplate>
-                    <AudioPreview ClientFile="@context.Item"></AudioPreview>
-                </CellTemplate>
-            </Column>*@
-            
+            </Column>          
         </Columns> 
     </MudDataGrid>    
 }

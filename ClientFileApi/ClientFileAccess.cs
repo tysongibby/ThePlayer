@@ -10,7 +10,10 @@ namespace ClientFileApi
     // requires clientFileAccess.js
     public class ClientFileAccess : JSModuleBase
     {
-        public ClientFileAccess(IJSRuntime js) : base(js, "./_content/ClientFileApi/js/clientFileAccess.js")
+        //public ClientFileAccess(IJSRuntime js) : base(js, "./_content/ClientFileApi/js/clientFileAccess.js")
+        //{
+        //}
+        public ClientFileAccess(IJSRuntime js) : base(js, "/js/clientFileAccess.js")
         {
         }
 
@@ -82,23 +85,6 @@ namespace ClientFileApi
             catch (Exception e)
             {
                 throw new DirectoryNotFoundException(e.Message, e);
-            }
-        }
-
-        public async ValueTask<byte[]> DecodeAudioFileAsync(ClientFile file)
-        {
-            if (file == null)
-            {
-                throw new ArgumentNullException(nameof(file));
-            }
-
-            try
-            {
-                return await InvokeAsync<byte[]>("decodeAudioFile", file.Name);
-            }
-            catch (Exception e)
-            {
-                throw new FileNotFoundException(e.Message, e);
             }
         }
 

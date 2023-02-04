@@ -18,10 +18,10 @@
 @code {
     [Parameter, EditorRequired]
     public ClientFileAccess.ClientFile File { get; set; } = default!;
-    WaveformSvg? svg;
-    IJSObjectReference? playing;
+    WaveformSvg svg;
+    IJSObjectReference playing;
     CancellationTokenSource disposalCts = new();
-    string? message;
+    string message;
 
     record WaveformSvg(string TopPath, string BottomPath);
     WaveformSvg GenerateWaveformSvg(byte[] samplesData)
