@@ -17,17 +17,17 @@ namespace ClientPages.Shared
         IJSObjectReference playing;
         CancellationTokenSource disposalCts = new();
 
-        protected override async Task OnInitializedAsync()
-        {
-            // get file wave form data
-            byte[] waveFormData = await ClientFileAccess.DecodeAudioFileAsync(File);
-            // generate svg wave form
-            await Task.Run(() =>
-            {
-                waveFormSvgData = GenerateWaveformSvg(waveFormData);
-            },
-            disposalCts.Token);
-        }
+        //protected override async Task OnInitializedAsync()
+        //{
+        //    // get file wave form data
+        //    byte[] waveFormData = await ClientFileAccess.DecodeAudioFileAsync(File);
+        //    // generate svg wave form
+        //    await Task.Run(() =>
+        //    {
+        //        waveFormSvgData = GenerateWaveformSvg(waveFormData);
+        //    },
+        //    disposalCts.Token);
+        //}
 
 
         public void Dispose()
