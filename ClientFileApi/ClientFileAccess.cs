@@ -13,31 +13,6 @@ namespace ClientFileApi
         public ClientFileAccess(IJSRuntime js) : base(js, "./_content/ClientFileApi/js/clientFileAccess.js")
         {
         }
-        //public ClientFileAccess(IJSRuntime js) : base(js, "/js/clientFileAccess.js")
-        //{
-        //}
-
-        // CRUD operations
-        //public async ValueTask<JSDirectory> AddAsync(string path, string fileName, object file)
-        //{
-        //    throw new NotImplementedException();
-        //}
-        //public async ValueTask<JSDirectory> AddRangeAsync(string path, string fileName, IEnumerable<object> files)
-        //{
-        //    throw new NotImplementedException();
-        //}
-        //public async ValueTask<JSDirectory> UpdateAsync(string path, string fileName, object file)
-        //{
-        //    throw new NotImplementedException();
-        //}
-        //public async ValueTask<JSDirectory> RemoveAsync(string path, string fileName)
-        //{
-        //    throw new NotImplementedException();
-        //}
-        //public async ValueTask<JSDirectory> RemoveRangeAsync(string path, string fileName, IEnumerable<object> files)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         // Get operations
         public async ValueTask<JSDirectory> ShowDirectoryPickerAsync()
@@ -64,12 +39,6 @@ namespace ClientFileApi
             }
         }
 
-        //public async ValueTask<JSFile> GetFileAsync(string path)
-        //{
-        //    throw new NotImplementedException("MediaFilesAccess.GetFileAsync(string path) is not yet implemented.");
-        //    //return await InvokeAsync<JSFile>("getFile", path); // needs js function
-        //}
-
         // Get Files from Client
         public async ValueTask<ClientFile[]> GetFilesAsync(JSDirectory directory)
         {
@@ -85,6 +54,34 @@ namespace ClientFileApi
             catch (Exception e)
             {
                 throw new DirectoryNotFoundException(e.Message, e);
+            }
+        }
+
+        // Audio player functions
+        public async ValueTask<IJSObjectReference> PlayAudioFileAsync(ClientFile file)
+        {
+            return await InvokeAsync<IJSObjectReference>("playAudioFile", file.Name);
+        }
+
+        public async ValueTask<IJSObjectReference> PlayAudioDataAsync(byte[] data)
+        {
+            return await InvokeAsync<IJSObjectReference>("playAudioData", data);
+        }
+
+        public async ValueTask<byte[]> DecodeAudioFileAsync(ClientFile file)
+        {
+            if (file == null)
+            {
+                throw new ArgumentNullException(nameof(file));
+            }
+
+            try
+            {
+                return await InvokeAsync<byte[]>("decodeAudioFile", file.Name);
+            }
+            catch (Exception e)
+            {
+                throw new FileNotFoundException(e.Message, e);
             }
         }
 

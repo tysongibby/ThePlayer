@@ -22,7 +22,5 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 //builder.Services.AddScoped<IAudioFileRepository, AudioFileRepository>();
 builder.Services.AddMudServices();
 builder.Services.AddScoped<ClientFileAccess>();
-builder.Services.AddScoped<AudioPlayer>();
-
 
 await builder.Build().RunAsync();

@@ -1,21 +1,21 @@
-﻿@using System.Threading;
-@using ClientPages.Shared;
-@using ClientFileApi;    
-@using System;
-@using System.Threading.Tasks;
-@using Microsoft.AspNetCore.Components;
+﻿@using Microsoft.AspNetCore.Components;
 @using Microsoft.JSInterop;
+@using ClientFileApi;    
 @using System.Runtime.InteropServices;
 @using System.Text;
-@inject AudioPlayer Player;
+@inject ClientFileAccess ClientFileAccess;
+@implements IDisposable;
 
 @*<svg @onclick="@OnInitializedAsync" class="waveform" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path d="@waveFormSvgData.TopPath" />
     <path d="@waveFormSvgData.BottomPath" opacity="0.5" />
 </svg>*@
 
-<MudIconButton OnClick="TogglePlayingAudioAsync" Icon="Icons.Material.Filled.PlayArrow" is-playing="@(playing is not null)" />
+@*<MudIconButton OnClick="TogglePlayingAudioAsync" Icon="Icons.Material.Filled.PlayArrow" is-playing="@(playing is not null)" />*@
 
+<button @onclick="TogglePlayingAudioAsync" is-playing="@(playing is not null)">
+    <MudIcon Icon="Icons.Material.Filled.PlayArrow" />
+</button>
 
 
 

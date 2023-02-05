@@ -1,10 +1,9 @@
 ﻿@page "/"
 @using Microsoft.AspNetCore.Components.QuickGrid;
-@using ClientFileApi;
-@using static ClientFileApi.ClientFileAccess;
 @using NeoSmart.PrettySize;
 @using ClientPages.Shared;
-@inject ClientFileAccess ClientFiles;
+@using ClientFileApi;
+@inject ClientFileApi.ClientFileAccess ClientFiles;
 
 <MudAppBar Class="gap-2">   
     
@@ -54,12 +53,12 @@
                           IconSize="Size.Medium" Class="mt-0" />            
         </ToolBarContent>
         <Columns>
-            <Column T="ClientFile" Title="Name" Field="Name" Sortable="true" />
-            <Column T="ClientFile" Title="Size" Field="Size" Sortable="true" />
-            <Column T="ClientFile" Title="Relative Path" Field="RelativePath" Sortable="true" />
-            <Column T="ClientFile" Title="Audio">
+            <Column T="ClientFileAccess.ClientFile" Title="Name" Field="Name" Sortable="true" />
+            <Column T="ClientFileAccess.ClientFile" Title="Size" Field="Size" Sortable="true" />
+            <Column T="ClientFileAccess.ClientFile" Title="Relative Path" Field="RelativePath" Sortable="true" />
+            <Column T="ClientFileAccess.ClientFile" Title="Audio">
                 <CellTemplate>                                        
-                    <Audio File="@context.Item" JsRuntime="JsRuntime"></Audio>
+                    <Audio File="@context.Item"></Audio>
                     @*<EAudio AudioFilePath="@context.Item.Path"></EAudio>*@
                 </CellTemplate>
             </Column>          

@@ -1,8 +1,6 @@
 using System;
-
 using System.Linq;
 using System.Threading.Tasks;
-using static ClientFileApi.ClientFileAccess;
 using ClientFileApi;
 using Microsoft.JSInterop;
 using Microsoft.AspNetCore.Components;
@@ -12,16 +10,10 @@ namespace ClientPages.Pages
     public partial class Index
     {
         // TODO: bookmark for Build an Audio Browser app with Blazor | .NET Conf 2022 https://youtu.be/2t4VwBeQ9DY?t=1317
-        [Inject]
-        public IJSRuntime JsRuntime { get; set; }
         internal string DirectoryName { get; set; }
-        IQueryable<ClientFile> files;        
-        ClientFile SelectedFile { get; set; }
-
-
+        IQueryable<ClientFileAccess.ClientFile> files;               
         // MudGrid variables
         private string searchString;
-
 
         protected override async Task OnInitializedAsync()
         {            
@@ -32,6 +24,7 @@ namespace ClientPages.Pages
                 files = (await ClientFiles.GetFilesAsync(dir)).AsQueryable();
             }
         }
+
 
         async Task OpenDir()
         {
@@ -49,7 +42,7 @@ namespace ClientPages.Pages
 
         // MudGrid methods
         // quick filter - filter gobally across multiple columns with the same input
-        private Func<ClientFile, bool> quickFilter => x =>
+        private Func<ClientFileAccess.ClientFile, bool> quickFilter => x =>
         {
             if (string.IsNullOrWhiteSpace(searchString))
                 return true;
