@@ -97,7 +97,7 @@ function fileListExtensionFilter(fileNameList, extensionFilterList) {
 export async function decodeAudioFile(name) {
     // Read the file
     const dir = history.state.currentDir;
-    const fileHandle = await dir.getFileHandle(name);
+    const fileHandle = await dir.getFileHandle(name); // TODO: for some reason blazor webassebmly js is intercepting this js script call
     const file = await fileHandle.getFile();
     const fileBytes = await file.arrayBuffer();
 
