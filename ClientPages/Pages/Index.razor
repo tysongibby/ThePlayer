@@ -6,44 +6,21 @@
 @inject ClientFileApi.ClientFileAccess ClientFiles;
 
 <MudAppBar Class="gap-2">   
-    
-    <MudSpacer />
-    <MudButton Variant="Variant.Filled" Color="Color.Warning" OnClick="OpenDir" StartIcon="@Icons.Custom.Uncategorized.Folder">
-        <MudText>Load Music</MudText>
-        @*<MudIconButton Icon="@Icons.Custom.Uncategorized.Folder" Color="Color.Inherit" />*@
-    </MudButton>    
-    
+    <MudText Typo="Typo.h5">The Player</MudText>
     @if (files is not null)
     {
-        <MudText>@files.Count() songs</MudText>
+        
     }
+    <MudSpacer />    
+    <MudFab OnClick="OpenDir" Color="Color.Warning" StartIcon="@Icons.Material.Filled.Add" Size="Size.Small" />    
 </MudAppBar>
 
 @if (files is not null)
 {
-@*    <QuickGrid Items="files" Class="files-grid" Virtualize="true" ItemSize="64">
-        <PropertyColumn Property="@(f => f.Name)" Sortable="true">
-            <ColumnOptions>
-                <div class="search-box">
-                    <input type="search" 
-                           @bind="searchString" 
-                           @bind:event="oninput"
-                           autofocus placeholder="Name..." />
-                </div>
-            </ColumnOptions>
-        </PropertyColumn>        
-        <PropertyColumn Title="Size" Property="@(f => new PrettySize(f.Size))" Sortable="true" />
-        <PropertyColumn Title="Modified" Property="@(f => f.LastModified)" Sortable="true" />
-        <TemplateColumn Title="Audio">
-            <Audio File="@context" />
-        </TemplateColumn>
-    </QuickGrid>*@
-
-
-
     <MudDataGrid Items="@files" SortMode="SortMode.Multiple" QuickFilter="@quickFilter">
         <ToolBarContent>
-            <MudText Typo="Typo.h6">Music List</MudText>
+            <MudText Typo="Typo.h6" Class="mr-4">Audio List</MudText>
+            <MudText Typo="Typo.body1">@files.Count() songs</MudText>
             <MudSpacer />
             <MudTextField @bind-Value="searchString" 
                           Placeholder="Search" 
@@ -64,5 +41,13 @@
             </Column>          
         </Columns> 
     </MudDataGrid>    
+
+}
+else
+{
+
+    <MudText Typo="Typo.h6" Align="MudBlazor.Align.Center">Let's start the party!</MudText>
+    <MudText Typo="Typo.body1" Align="MudBlazor.Align.Center">Add some audio files by clicking the '+' in the top right.</MudText>
+
 }
 

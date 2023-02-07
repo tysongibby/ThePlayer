@@ -57,9 +57,10 @@ export async function getFiles(directoryHandle, relativePath) {
             files.push(...await getFiles(handle, relativePath));
         }
         else if (handle.kind === 'file') {
-            const isMusicFile = hasMusicFileExtension(handle);
-            if (isMusicFile) {
-                const file = await handle.getFile();                
+            const isAudioFile = hasAudioFileExtension(handle);
+            if (isAudioFile) {
+                const file = await handle.getFile(); 
+                relativePath += '/' + file.name;
                 files.push({ name: file.name, size: file.size, relativePath: relativePath });
             }
         }
@@ -69,11 +70,11 @@ export async function getFiles(directoryHandle, relativePath) {
     return files;
 }
 
-function hasMusicFileExtension(handle) {
+function hasAudioFileExtension(handle) {
     let result = false;
-    const musicFileExtensionList = ['mp3', 'm4a', 'mp4', 'mpeg', 'flac', 'oog', 'wav'];
-    for (const musicFileExtension of musicFileExtensionList) {
-        if (handle.name.endsWith(musicFileExtension)) {
+    const audioFileExtensionList = ['mp3', 'm4a', 'mp4', 'mpeg', 'flac', 'oog', 'wav'];
+    for (const audioFileExtension of audioFileExtensionList) {
+        if (handle.name.endsWith(audioFileExtension)) {
             result = true;
             return result;
         }
