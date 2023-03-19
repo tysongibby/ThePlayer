@@ -5,6 +5,7 @@ This project is designed to leverage new tecnologies in .NET 6 that leverage Bla
 references:
 - File and Directory Entries API https://developer.mozilla.org/en-US/docs/Web/API/File_and_Directory_Entries_API/Introduction
 - File System Access API https://web.dev/read-files/
+- Chrome: The File System Access API https://developer.chrome.com/articles/file-system-access/
 - Build an Audio Browser app with Blazor | .NET Conf 2022 https://youtu.be/2t4VwBeQ9DY
 - New Blazor WebAssembly capabilities in .NET 6 https://youtu.be/kesUNeBZ1Os  (starting at 6:30)
 - SQLite with EF Core in Blazor Wasm https://www.youtube.com/watch?v=2UPiKgHv8YE

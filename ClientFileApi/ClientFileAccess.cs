@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using static ClientFileApi.ClientFileAccess;
 
@@ -57,10 +58,28 @@ namespace ClientFileApi
             }
         }
 
+        // Get DirectoryHandle from relative path
+        public async ValueTask<JSDirectory> GetDirectoryHandleAsync(string relativePath)
+        {
+            if (relativePath == null)
+            {
+                throw new ArgumentNullException(nameof(relativePath));
+            }
+
+            try
+            {
+                return await InvokeAsync<JSDirectory>("getDirectoryHandle", relativePath);
+            }
+            catch (Exception e)
+            {
+                throw new DirectoryNotFoundException(e.Message, e);
+            }
+        }
+
         // Audio player functions
         public async ValueTask<IJSObjectReference> PlayAudioFileAsync(ClientFile file)
-        {
-            return await InvokeAsync<IJSObjectReference>("playAudioFile", file.Name);
+        {            
+            return await InvokeAsync<IJSObjectReference>("playAudioFile", new { file.Name, file.RelativePath });
         }
 
         public async ValueTask<IJSObjectReference> PlayAudioDataAsync(byte[] data)
@@ -77,7 +96,7 @@ namespace ClientFileApi
 
             try
             {
-                return await InvokeAsync<byte[]>("decodeAudioFile", file.Name);
+                return await InvokeAsync<byte[]>("decodeAudioFile", new { file.Name, file.RelativePath });
             }
             catch (Exception e)
             {
