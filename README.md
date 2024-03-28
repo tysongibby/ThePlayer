@@ -1,5 +1,5 @@
 # The Player
-A music player that plays music.
+A audio file player that plays audio files. [NOT YET FUNCTIONAL] 
 This project is designed to leverage new tecnologies in .NET 6 that leverage Blazor Web Assemblies, specifically allowing 3 party libraries to be complied and deployed to the web browser client. In this case SQLite is the library being deployed as a Web Assmbly.
 
 references:
